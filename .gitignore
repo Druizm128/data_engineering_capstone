@@ -1,0 +1,7 @@
+.DS_Store
+*.pem
+*.credentials.csv
+*.json
+*.parquet
+.ipynb_checkpoints
+admin_yelp_credentials.csv
