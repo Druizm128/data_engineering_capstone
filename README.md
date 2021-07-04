@@ -17,11 +17,29 @@
 
 ## Steps
 
-- `S01_etl.ipynb`:
-- `S02_eda.ipynb`: 
-- `S03_data_model.ipynb`
-- ``
+- `S01_etl.ipynb`: Extract, transform and load Yelp datasets.
+    + Here `json` files are read and converted to parquet files. Data is partitioned by metropolitan_area and year to optimize Spark performance.
+    + Data quality checks are perfomed and data is cleaned. Text variables are converted to lower case, json lists are unnested in yelp_academic_dataset_business. Date and time variables are extracted from timestamp.
+    + Business metropolitan areas a created using KMeans algorithm, and a catalog is created
+    + Cleaned datasets are stored in output for further analysis.
+- `S02_eda.ipynb`: A brief exploratory analysis is conducted on the partitioned parquets and cleaned data to learn more about the data, aggregations and quality issues.
+- `S03_data_model.ipynb`: The data model is implemented the dimensions and a restaurant fact table is created.
+    + Create number of business checkins table
+    + Create number of business tips table
+    + Create number of business reviews table
+    + Create business union table: Here the fact table is built for all business.
+    + Create a Restaurants Catalog: A catalog for all restaurant business is created, labelling observations manually.
+    + Create restaurants table. The final fact table is stored in a dataset in the following address `data/output/restaurants.csv`. 
+- `S04_analytics.Rmd`: This is the analytics code where the top 10 most reviewed restaurants for each metropolitan is generated. The final report can be consulted in `S04_analytics.html`
 
 ## Repository structure
 
+`config`: Configuration files for data and aws services.
+`data`: The inputs, preprocessing and outputs are stored here.
+    `input`: Here is where the original `json` files are stored for further preprocessing.
+    `preprocessing`: Intermediate tables such as catalogs are stored here.
+    `output`: Cleaned data are stored here as parquet files.
+
 ## Data Model
+
+The data model for this project is explained in the following diagram.
