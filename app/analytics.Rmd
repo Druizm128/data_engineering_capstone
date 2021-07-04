@@ -42,6 +42,28 @@ tbl_restaurants <-
 
 
 ```{r}
+tbl_restaurants %>% 
+  ggplot( aes(review_count, stars) ) + 
+  geom_jitter(alpha = 0.2) + 
+  labs(title = "Review count vs Stars") +
+  facet_wrap(~metropolitan_area)  + 
+  labs(title = "Review count vs Stars")
+```
+
+
+
+
+```{r}
+tbl_restaurants %>% 
+  ggplot( aes(num_checkins, stars) ) + 
+  geom_jitter(alpha = 0.2) + 
+  labs(title = "Check ins vs Stars") +
+  facet_wrap(~metropolitan_area)  + 
+  labs(title = "Check ins vs Stars")
+```
+
+
+```{r}
 # Calculate the top 10 restaurants by city
 tbl_most_reviewed <-
   tbl_restaurants %>% 
