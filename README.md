@@ -41,5 +41,23 @@
     `output`: Cleaned data are stored here as parquet files.
 
 ## Data Model
-
+ 
 The data model for this project is explained in the following diagram.
+
+## Technology used in current scenario
+
+- `Spark`: Spark was used in the local environment, as the data is not big enough to demand a cluster. However, data is big enough that file partitioning optimizations had to be performed, to increase the performance of the ETL.
+
+- `Python`: Python was used to perform the ETLs and to connect to Spark. This pipeline was implemented in Python so it could be run in a AWS EMR cluster as well.
+
+- `R`: An R Markdown was used to analyze the data and produce the maps in leaflet.
+
+## Production scenario
+
+- Assuming that Yelp data can be extracted periodically, this pipeline can be executed in AWS services using a EMR cluster with Spark.
+
+- Data should be stored in the data lake in S3, using the code `S00_stage_data.ipynb`.
+
+- The ETL in `S01_etl.ipynb` already has the code to launch the EMR cluster, and in `config` the configuration files to setup the credentials and variables for the infrastructure will be stored.
+
+- Based on the objective of this analysis, the pipeline could be scheduled to run with Airflow every start of a new month.
