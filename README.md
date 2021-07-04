@@ -44,6 +44,26 @@
  
 The data model for this project is explained in the following diagram.
 
+
+Data dictionary for `restaurants.csv`
+
+- `categories`: character. Restaurants category.
+- `cluster`: double. Id metropolitan area.
+- `metropolitan_area`: character. Name of metropolitan area.
+- `business_id`: character. Business id.
+- `name`: character. Name of business.
+- `latitude`: double. Latitude.
+- `longitude`: double. Longitude.
+- `review_count`: double. Number of reviews that the restaurant has.
+- `stars`: double. Average stars that the restaurant has.
+- `year`: double. Year of the data.
+- `num_checkins`: double. Number of checkins for the given year.
+- `num_tips`: double. Number of tips that the users have written given the year.
+- `num_reviews`: double. Number of user reviews in the dataset for this business in the given year.
+- `mean_stars_reviews`: double. Number of mean stars for the user reviews.
+- `is_restrautrant`: logical. Is this business a restaurant.
+
+
 ## Technology used in current scenario
 
 - `Spark`: Spark was used in the local environment, as the data is not big enough to demand a cluster. However, data is big enough that file partitioning optimizations had to be performed, to increase the performance of the ETL.
