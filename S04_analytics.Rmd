@@ -16,6 +16,7 @@ library(kableExtra)
 ```
 
 ```{r}
+# Read restautants dataframe.
 tbl_restaurants <- 
   read_csv("../data/output/restaurants.csv",
            col_types = cols(
@@ -42,10 +43,10 @@ tbl_restaurants <-
 
 
 ```{r}
+# Plot the relationshipt of review counts and stars
 tbl_restaurants %>% 
   ggplot( aes(review_count, stars) ) + 
   geom_jitter(alpha = 0.2) + 
-  labs(title = "Review count vs Stars") +
   facet_wrap(~metropolitan_area)  + 
   labs(title = "Review count vs Stars")
 ```
@@ -54,10 +55,10 @@ tbl_restaurants %>%
 
 
 ```{r}
+# Plot the relationshipt of number of checkins and stars
 tbl_restaurants %>% 
   ggplot( aes(num_checkins, stars) ) + 
   geom_jitter(alpha = 0.2) + 
-  labs(title = "Check ins vs Stars") +
   facet_wrap(~metropolitan_area)  + 
   labs(title = "Check ins vs Stars")
 ```
@@ -73,6 +74,12 @@ tbl_most_reviewed <-
 
 
 ```{r}
+#' Create a leaflet map with the top most reviewed restaurants.
+#' 
+#' @param metro_area A string with the name of the metropolitan area..
+#' @return A leaflet map
+#' @examples
+#' fun_graph_map(metro_area = 'Denver, Colorado')
 fun_graph_map <- function(metro_area = 'Denver, Colorado'){
   # Calculate centers
   map_center <- 
@@ -105,6 +112,12 @@ fun_graph_map <- function(metro_area = 'Denver, Colorado'){
 ```
 
 ```{r}
+#' Create a kable table  with the top most reviewed restaurants.
+#' 
+#' @param metro_area A string with the name of the metropolitan area..
+#' @return A kable extra table
+#' @examples
+#' fun_draw_table(metro_area = 'Denver, Colorado')
 fun_draw_table <- function(metro_area = 'Denver, Colorado'){
   tbl_most_reviewed %>%
     filter(metropolitan_area == metro_area) %>% 
