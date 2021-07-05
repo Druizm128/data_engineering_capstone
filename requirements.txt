@@ -1,0 +1,17 @@
+numpy
+pandas
+jupyterlab
+matplotlib
+plotnine
+xlrd
+fsspec
+configparser
+psycopg2
+sql_queries
+pyspark
+ipywidgets
+pandas_profiling
+tqdm
+pyjanitor
+pyarrow
+fastparquet
