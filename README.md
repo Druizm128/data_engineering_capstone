@@ -44,6 +44,7 @@
  
 The data model for this project is explained in the following diagram.
 
+![Data Model](figs/data_model.png)
 
 Data dictionary for `restaurants.csv`
 
